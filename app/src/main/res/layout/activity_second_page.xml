@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondPageActivity"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/dpPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/img1" />
+
+    <TextView
+        android:id="@+id/dpName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dpPic"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/comix_loud"
+        android:text="JOHN"
+        android:layout_marginTop="10dp"
+        android:textColor="#FF842B"
+        android:textSize="25sp" />
+
+    <ScrollView
+        android:id="@+id/dpScroll"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@id/dpName"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp">
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img1"
+                    android:layout_marginLeft="20dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img2"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img3"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp">
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img4"
+                    android:layout_marginLeft="20dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img5"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img5"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img6"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img6"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp">
+                <ImageView
+                    android:id="@+id/img7"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img7"
+                    android:layout_marginLeft="20dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img8"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img8"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img9"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img9"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp">
+                <ImageView
+                    android:id="@+id/img10"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img10"
+                    android:layout_marginLeft="20dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img11"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img11"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img12"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img12"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp">
+                <ImageView
+                    android:id="@+id/img13"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img13"
+                    android:layout_marginLeft="20dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img14"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img14"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+                <ImageView
+                    android:id="@+id/img15"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/img15"
+                    android:layout_marginLeft="40dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:longClickable="true"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/setProfile"
+        android:text="SET PROFILE"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:fontFamily="@font/bungee_regular"
+        android:layout_width="325dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
+        android:shadowColor="#ADADAD"
+        android:background="@drawable/anim_onpress_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dpScroll"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        />
+
+
+</RelativeLayout>

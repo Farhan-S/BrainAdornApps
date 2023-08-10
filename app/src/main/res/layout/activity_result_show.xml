@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    tools:context=".PopupActiviy"
+    android:background="@android:color/transparent"
+    android:layout_centerInParent="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:background="@drawable/levelcomplete"
+        android:layout_marginTop="30dp">
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/lvlIndicator"
+        android:layout_width="230dp"
+        android:layout_height="80dp"
+        android:background="@drawable/levelindicator"
+        android:layout_centerHorizontal="true"
+        android:text="SUCCESS"
+        android:gravity="center"
+        android:fontFamily="@font/bungee_regular"
+        android:textSize="30sp"
+        android:textColor="#555555"/>
+
+    <LinearLayout
+        android:id="@+id/stars"
+        android:layout_marginTop="80dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_gravity="bottom"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/levelstarfailed"/>
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/levelstarfailed"/>
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_gravity="bottom"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/levelstarfailed"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/onSuccessReplay"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/playagain"
+        android:text="REPLAY"
+        android:textCursorDrawable="@drawable/baseline_replay_24"
+        android:gravity="center"
+        android:fontFamily="@font/bungee_regular"
+        android:textSize="15sp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="230dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:foreground="?attr/selectableItemBackground"/>
+
+
+
+    <TextView
+
+        android:id="@+id/nextLvl"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:background="@drawable/nextarrowbtn"
+        android:text="NEXT"
+        android:gravity="center"
+        android:fontFamily="@font/bungee_regular"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:foreground="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/skipLvl"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:background="@drawable/nextarrowbtn"
+        android:text="SKIP"
+        android:gravity="center"
+        android:fontFamily="@font/bungee_regular"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:foreground="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/skiptxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SKIP FOR 4X"
+        android:gravity="center"
+        android:fontFamily="@font/bungee_regular"
+        android:textSize="25sp"
+        android:layout_below="@id/stars"
+        android:layout_centerHorizontal="true"
+        />
+    <ImageView
+        android:id="@+id/skipDiamond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wg_dimond_v"
+        android:layout_below="@id/stars"
+        android:layout_toEndOf="@id/skiptxt"
+        android:layout_marginTop="20dp"/>
+
+
+
+
+
+
+</RelativeLayout>

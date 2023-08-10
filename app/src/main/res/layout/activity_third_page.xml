@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdPageActivity"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:id="@+id/dp_ll"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:background="@drawable/dp_frame_normal"
+
+        >
+        <ImageView
+            android:id="@+id/dpPic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img1"/>
+    </LinearLayout>
+
+    <TextView
+
+        android:id="@+id/dpName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dp_ll"
+        android:layout_marginTop="10dp"
+        android:text="JOHN WICK"
+        android:textColor="#FF842B"
+        android:fontFamily="@font/comix_loud"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
+
+
+
+    <TextView
+        android:id="@+id/selGameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dpName"
+        android:text="SELECT GAME"
+        android:textColor="#42A5F5"
+        android:fontFamily="@font/bungee_regular"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"/>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/gameSelLay"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:layout_below="@id/selGameTv"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/select_Wg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/anim_onpress_game_selection_btn"
+            android:text="WORD GUESSING"
+            android:fontFamily="@font/bungee_regular"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/anim_onpress_game_selection_btn"
+            android:layout_marginTop="15dp"
+            android:text="Truth and dare"
+            android:fontFamily="@font/bungee_regular"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/anim_onpress_game_selection_btn"
+            android:layout_marginTop="15dp"
+            android:text="memorise"
+            android:fontFamily="@font/bungee_regular"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/anim_onpress_game_selection_btn"
+            android:layout_marginTop="15dp"
+            android:text="puzzle"
+            android:fontFamily="@font/bungee_regular"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

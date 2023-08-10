@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WgPlayActivity"
+    android:background="@drawable/guess_word_bg">
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+
+
+
+    <ScrollView
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/topRelativeLay"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/aquiredDimond"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/nextbtn"
+            android:drawableRight="@drawable/wg_dimond_v"
+            android:fontFamily="@font/comix_loud"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="50"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/aquiredStar"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/nextbtn"
+            android:drawableLeft="@drawable/wg_hint_star_v"
+            android:fontFamily="@font/comix_loud"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="5"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/moreHint"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/aquiredStar"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/more_hint_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+
+            />
+
+        <TextView
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/aquiredDimond"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/more_dimond_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+
+            />
+
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_above="@id/dpName"
+            android:layout_centerHorizontal="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/dp_frame_normal"
+
+            >
+            <ImageView
+                android:id="@+id/dpPic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/img1"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dpName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="JOHN WICK"
+            android:textColor="#FF842B"
+            android:fontFamily="@font/comix_loud"
+            android:textSize="15sp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+
+        android:id="@+id/timer3sec"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:text="3"
+        android:fontFamily="@font/comix_loud"
+        android:textSize="120sp"
+        android:gravity="center"
+        android:textColor="#B7888888"
+        android:layout_below="@id/topRelativeLay"
+        android:layout_centerHorizontal="true"
+
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/hint1"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:layout_above="@id/quizTv"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/timer60sec"
+        android:background="@drawable/nextbtn"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <TextView
+            android:id="@+id/hint1tv"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:fontFamily="@font/comix_loud"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:text="HINT 1\n\n1X"
+
+            android:textColor="#5B5A5A"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wg_hint_star_v"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginRight="24dp"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hint2"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:layout_above="@id/quizTv"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/timer60sec"
+        android:background="@drawable/nextbtn"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <TextView
+            android:id="@+id/hint2tv"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:fontFamily="@font/comix_loud"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:text="HINT 2\n\n2X"
+
+            android:textColor="#5B5A5A"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wg_hint_star_v"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginRight="24dp"/>
+
+
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/timer60sec"
+        android:layout_marginTop="15dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/playagain"
+        android:layout_below="@id/topRelativeLay"
+        android:gravity="center"
+        android:fontFamily="@font/comix_loud"
+        android:layout_centerHorizontal="true"
+        android:text="60"
+        android:textColor="#5B5A5A"
+        android:textSize="19sp"
+        />
+    <TextView
+        android:id="@+id/quizTv"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:background="@drawable/levelcomplete"
+        android:layout_below="@id/timer60sec"
+        android:gravity="center"
+        android:fontFamily="@font/bungee_regular"
+        android:layout_centerHorizontal="true"
+        android:text="60"
+        android:textColor="#3D3737"
+        android:textSize="25sp"
+        android:layout_marginBottom="20dp"
+        />
+    <EditText
+        android:id="@+id/wg_ed"
+        android:hint="TYPE HERE"
+        android:textColorHint="#ADADAD"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:fontFamily="@font/bungee_regular"
+        android:inputType="textPersonName"
+        android:layout_width="325dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/nick_input_box_v"
+        android:maxLength="20"
+        android:layout_below="@id/quizTv"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/submitBtn"
+        android:text="SUBMIT"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:fontFamily="@font/bungee_regular"
+        android:layout_width="325dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
+        android:shadowColor="#ADADAD"
+        android:background="@drawable/anim_onpress_btn"
+        android:layout_below="@id/wg_ed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        />
+
+
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

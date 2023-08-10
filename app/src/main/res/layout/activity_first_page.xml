@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstPageActivity"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:id="@+id/bosslay"
+
+
+    >
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/quiz_logo_main"
+        android:layout_above="@id/toplayout"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:layout_above="@id/bottom_lay"
+        android:gravity="center_horizontal"
+        >
+        <EditText
+            android:id="@+id/nick_ed"
+            android:hint="NICKNAME"
+            android:textColorHint="#ADADAD"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:fontFamily="@font/bungee_regular"
+            android:inputType="textPersonName"
+            android:layout_width="325dp"
+            android:layout_height="62dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/nick_input_box_v"
+            android:maxLength="20"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/bottom_lay"
+        android:layout_alignParentBottom ="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="200dp"
+
+
+        >
+        <TextView
+            android:id="@+id/setNickNameBtn"
+            android:text="SET NICKNAME"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:fontFamily="@font/bungee_regular"
+            android:layout_width="325dp"
+            android:layout_height="62dp"
+            android:gravity="center_horizontal"
+            android:shadowColor="#ADADAD"
+            android:background="@drawable/anim_onpress_btn"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

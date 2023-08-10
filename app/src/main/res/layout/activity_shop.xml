@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShopActivity"
+    android:background="@drawable/guess_word_bg"
+    >
+
+    <RelativeLayout
+        android:id="@+id/topRelativeLay"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/aquiredDimond"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/nextbtn"
+            android:drawableRight="@drawable/wg_dimond_v"
+            android:fontFamily="@font/comix_loud"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="50"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/aquiredStar"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/nextbtn"
+            android:drawableLeft="@drawable/wg_hint_star_v"
+            android:fontFamily="@font/comix_loud"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="5"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+
+
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_above="@id/dpName"
+            android:layout_centerHorizontal="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/dp_frame_normal"
+
+            >
+            <ImageView
+                android:id="@+id/dpPic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/img1"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dpName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="JOHN WICK"
+            android:textColor="#FF842B"
+            android:fontFamily="@font/comix_loud"
+            android:textSize="15sp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/topRelativeLay"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/levelcomplete"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/shop_hint_lvl"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/levelindicator"
+            android:text="BUY HINT \nFROM DIAMOND"
+            android:textAlignment="center"
+            android:fontFamily="@font/bungee_regular"
+            android:textSize="25sp"
+            android:textColor="#676565"
+
+
+            />
+
+        <LinearLayout
+            android:id="@+id/howManyHint"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/shop_hint_lvl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:fontFamily="@font/comix_loud"
+                android:textSize="30sp"
+                android:layout_marginRight="5dp"
+                />
+
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/wg_dimond_v"
+                android:layout_marginRight="50dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="="
+                android:fontFamily="@font/comix_loud"
+                android:textSize="30sp"
+                android:layout_marginRight="50dp"
+        />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:fontFamily="@font/comix_loud"
+                android:textSize="30sp"
+                android:layout_marginRight="5dp"/>
+
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/wg_hint_star_v"
+
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/buyNow"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:text="BUY NOW"
+            android:fontFamily="@font/bungee_regular"
+            android:background="@drawable/anim_onpress_btn"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:textSize="35sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/howManyHint"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+
+            />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
