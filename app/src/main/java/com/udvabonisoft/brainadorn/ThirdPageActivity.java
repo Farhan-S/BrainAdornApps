@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class ThirdPageActivity extends AppCompatActivity {
 
-    TextView select_Wg,dpName,TandD;
+    TextView select_Wg,dpName,TandD,select_mem;
     ImageView dpPic;
     String dpPicName;
     SharedPreferences sharedPreferences;
@@ -25,6 +25,7 @@ public class ThirdPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_third_page);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         select_Wg=findViewById(R.id.select_Wg);
+        select_mem=findViewById(R.id.select_mem);
         dpPic=findViewById(R.id.dpPic);
         dpName=findViewById(R.id.dpName);
         TandD=findViewById(R.id.TandD);
@@ -53,6 +54,14 @@ public class ThirdPageActivity extends AppCompatActivity {
 
 
                 startActivity(new Intent(ThirdPageActivity.this,WgFirstActivity.class));
+            }
+        });
+
+        select_mem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ThirdPageActivity.this,MemoMainActivity.class));
+
             }
         });
 
