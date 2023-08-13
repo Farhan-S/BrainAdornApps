@@ -1,7 +1,10 @@
 package com.udvabonisoft.brainadorn;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,11 +20,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -46,6 +57,10 @@ public class WgFirstActivity extends AppCompatActivity {
     public HashMap<String,String> hashMap=new HashMap<>();
 
     private AdView mAdView;
+    private RewardedAd rewardedAd;
+
+    boolean isLoading;
+    static boolean isLoaded;
 
 
     @Override
@@ -61,6 +76,8 @@ public class WgFirstActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+
+        loadRewardedAd();
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -107,11 +124,109 @@ public class WgFirstActivity extends AppCompatActivity {
         aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
         aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
 
+        moreDiamond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                loadRewardedVideoAd();
+                buyDiamond();
 
-
-
-
+            }
+        });
     }
+
+
+    private void loadRewardedAd() {
+        if (rewardedAd == null) {
+            isLoading = true;
+            AdRequest adRequest = new AdRequest.Builder().build();
+            RewardedAd.load(
+                    this,
+                    "ca-app-pub-3940256099942544/5224354917",
+                    adRequest,
+                    new RewardedAdLoadCallback() {
+                        @Override
+                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                            // Handle the error.
+
+                            rewardedAd = null;
+                            WgFirstActivity.this.isLoading = false;
+                            Toast.makeText(WgFirstActivity.this, "Failed to show an Ad !", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                            WgFirstActivity.this.rewardedAd = rewardedAd;
+
+                            WgFirstActivity.this.isLoading = false;
+                            isLoaded=true;
+                        }
+                    });
+        }
+    }
+
+
+    private void showRewardedVideo() {
+
+        if (rewardedAd == null) {
+
+            return;
+        }
+//        showVideoButton.setVisibility(View.INVISIBLE);
+
+        rewardedAd.setFullScreenContentCallback(
+                new FullScreenContentCallback() {
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        // Called when ad is shown.
+
+
+                    }
+
+                    @Override
+                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+                        // Called when ad fails to show.
+
+                        // Don't forget to set the ad reference to null so you
+                        // don't show the ad a second time.
+                        rewardedAd = null;
+                        Toast.makeText(
+                                        WgFirstActivity.this, "Try again !", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        // Called when ad is dismissed.
+                        // Don't forget to set the ad reference to null so you
+                        // don't show the ad a second time.
+                        rewardedAd = null;
+
+                        Toast.makeText(WgFirstActivity.this, "Closed Ads !", Toast.LENGTH_SHORT)
+                                .show();
+                        isLoaded=false;
+                        // Preload the next rewarded ad.
+                        WgFirstActivity.this.loadRewardedAd();
+                    }
+                });
+        Activity activityContext = WgFirstActivity.this;
+        rewardedAd.show(
+                activityContext,
+                new OnUserEarnedRewardListener() {
+                    @Override
+                    public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                        // Handle the reward.
+
+                        int rewardAmount = Integer.parseInt(sharedPreferences.getString("availableDiamond","50"));
+                        rewardAmount+=2;
+                        editor.putString("availableDiamond",String.valueOf(rewardAmount));
+                        editor.apply();
+                        Toast.makeText(getApplicationContext(),"You have earned 2 diamond !",Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+//
+
 
     public void saveArrayListToStorage() {
         try {
@@ -187,13 +302,13 @@ public class WgFirstActivity extends AppCompatActivity {
                 {
                     star1.setImageResource(R.drawable.levelstarsuccess);
                     star2.setImageResource(R.drawable.levelstarsuccess);
-                    lvl.setBackgroundResource(R.drawable.levelstarfailed);
+                    lvl.setBackgroundResource(R.drawable.bronze_star);
                     lvl.setText("");
                 }
                 else if (Objects.equals(numStar,"1"))
                 {
                     star1.setImageResource(R.drawable.levelstarsuccess);
-                    lvl.setBackgroundResource(R.drawable.bronze_star);
+                    lvl.setBackgroundResource(R.drawable.levelstarfailed);
                     lvl.setText("");
                 }
             lvl.setOnClickListener(new View.OnClickListener() {
@@ -210,6 +325,51 @@ public class WgFirstActivity extends AppCompatActivity {
             });
             return myView;
         }
+    }
+
+    private void buyDiamond() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.CustomDialog);
+        View customLayout = getLayoutInflater().inflate(R.layout.diamond_shop_alert, null);
+        builder.setView(customLayout);
+
+        AlertDialog dialog = builder.create();
+
+        // Set up your custom UI elements and handle their interactions if needed
+        TextView positiveButton = customLayout.findViewById(R.id.posBtn);
+        TextView negativeButton = customLayout.findViewById(R.id.negBtn);
+
+
+
+   if(isLoaded)
+   {
+       positiveButton.setVisibility(View.VISIBLE);
+
+   }
+   else {
+       positiveButton.setVisibility(View.INVISIBLE);
+   }
+
+
+
+
+
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                showRewardedVideo();
+
+            }
+        });
+
+        negativeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     private void createTable() {

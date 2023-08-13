@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:background="@android:color/transparent"
+    >
+    <TextView
+        android:id="@+id/custom_alert"
+
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:background="@drawable/levelcomplete"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingEnd="80dp"
+        android:paddingStart="50dp"
+
+        android:fontFamily="@font/bungee_regular"
+        android:layout_centerHorizontal="true"
+        android:text="YOU CAN EARN DIAMOND BY WATCHING ADS !!!"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:textColor="#484848"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+
+
+        />
+
+
+    <LinearLayout
+        android:id="@+id/howManyHint"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:fontFamily="@font/comix_loud"
+            android:textSize="20sp"
+            android:layout_marginRight="5dp"
+            />
+
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/truth_and_dare_btn_bg_v"
+            android:layout_marginRight="30dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:fontFamily="@font/comix_loud"
+            android:textSize="20sp"
+            android:layout_marginRight="40dp"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:fontFamily="@font/comix_loud"
+            android:textSize="20sp"
+            android:layout_marginRight="5dp"/>
+
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/wg_dimond_v"
+
+            />
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/posBtn"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
+
+        android:background="@drawable/levelindicator"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/comix_loud"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:longClickable="true"
+        android:text="PLAY ADS" />
+
+
+    <TextView
+        android:id="@+id/negBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/dismiss"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/comix_loud"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:longClickable="true" />
+
+
+</RelativeLayout>
