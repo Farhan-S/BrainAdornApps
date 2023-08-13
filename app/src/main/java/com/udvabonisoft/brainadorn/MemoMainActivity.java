@@ -1,5 +1,6 @@
 package com.udvabonisoft.brainadorn;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -16,14 +17,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -32,7 +41,7 @@ public class MemoMainActivity extends AppCompatActivity {
 
     ImageView green, red, blue, yellow,dpPic;
 
-    TextView dpName,aquiredStar, aquiredDimond, scoreTv,hintBtn1, hintBtn2,timer3sec, moreHint;
+    TextView dpName,aquiredStar, aquiredDimond, scoreTv,hintBtn1, hintBtn2,timer3sec, moreHint,moreDiamond;
     Animation click_anim;
     MediaPlayer g_audio, r_audio, b_audio, y_audio, wrong;
     Button playBtn;
@@ -43,6 +52,10 @@ public class MemoMainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private RewardedAd rewardedAd;
+
+    boolean isLoading;
+    static boolean isLoaded;
 
     String buttonColors[] = {"green","red","blue","yellow"};
 
@@ -65,6 +78,8 @@ public class MemoMainActivity extends AppCompatActivity {
             }
         });
 
+        loadRewardedAd();
+
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -85,6 +100,7 @@ public class MemoMainActivity extends AppCompatActivity {
         gameLay=findViewById(R.id.gameLay);
         timer3sec=findViewById(R.id.timer3sec);
         moreHint=findViewById(R.id.moreHint);
+        moreDiamond=findViewById(R.id.moreDiamond);
 
 
 
@@ -219,6 +235,25 @@ public class MemoMainActivity extends AppCompatActivity {
             }
         });
 
+        moreDiamond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                loadRewardedVideoAd();
+                buyDiamond();
+
+            }
+        });
+
+
+    }
+
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
+        aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
 
     }
 
@@ -468,6 +503,146 @@ public class MemoMainActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void buyDiamond() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.CustomDialog);
+        View customLayout = getLayoutInflater().inflate(R.layout.diamond_shop_alert, null);
+        builder.setView(customLayout);
+
+        AlertDialog dialog = builder.create();
+
+        // Set up your custom UI elements and handle their interactions if needed
+        TextView positiveButton = customLayout.findViewById(R.id.posBtn);
+        TextView negativeButton = customLayout.findViewById(R.id.negBtn);
+
+
+
+        if(isLoaded)
+        {
+            positiveButton.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            positiveButton.setVisibility(View.INVISIBLE);
+        }
+
+
+
+
+
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                showRewardedVideo();
+
+            }
+        });
+
+        negativeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
+                aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
+            }
+        });
+        dialog.show();
+    }
+
+
+    private void showRewardedVideo() {
+
+        if (rewardedAd == null) {
+
+            return;
+        }
+//        showVideoButton.setVisibility(View.INVISIBLE);
+
+        rewardedAd.setFullScreenContentCallback(
+                new FullScreenContentCallback() {
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        // Called when ad is shown.
+
+
+                    }
+
+                    @Override
+                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+                        // Called when ad fails to show.
+
+                        // Don't forget to set the ad reference to null so you
+                        // don't show the ad a second time.
+                        rewardedAd = null;
+                        Toast.makeText(
+                                        MemoMainActivity.this, "Try again !", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        // Called when ad is dismissed.
+                        // Don't forget to set the ad reference to null so you
+                        // don't show the ad a second time.
+                        rewardedAd = null;
+
+                        Toast.makeText(MemoMainActivity.this, "Closed Ads !", Toast.LENGTH_SHORT)
+                                .show();
+                        isLoaded=false;
+                        // Preload the next rewarded ad.
+                        MemoMainActivity.this.loadRewardedAd();
+                    }
+                });
+        Activity activityContext = MemoMainActivity.this;
+        rewardedAd.show(
+                activityContext,
+                new OnUserEarnedRewardListener() {
+                    @Override
+                    public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                        // Handle the reward.
+
+                        int rewardAmount = Integer.parseInt(sharedPreferences.getString("availableDiamond","50"));
+                        rewardAmount+=2;
+                        editor.putString("availableDiamond",String.valueOf(rewardAmount));
+                        editor.apply();
+                        Toast.makeText(getApplicationContext(),"You have earned 2 diamond !",Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
+    private void loadRewardedAd() {
+
+        if (rewardedAd == null) {
+            isLoading = true;
+            AdRequest adRequest = new AdRequest.Builder().build();
+            RewardedAd.load(
+                    this,
+                    "ca-app-pub-3940256099942544/5224354917",
+                    adRequest,
+                    new RewardedAdLoadCallback() {
+                        @Override
+                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                            // Handle the error.
+
+                            rewardedAd = null;
+                            MemoMainActivity.this.isLoading = false;
+                            Toast.makeText(MemoMainActivity.this, "Failed to show an Ad !", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                            MemoMainActivity.this.rewardedAd = rewardedAd;
+
+                            MemoMainActivity.this.isLoading = false;
+                            isLoaded=true;
+                        }
+                    });
+        }
     }
 
 

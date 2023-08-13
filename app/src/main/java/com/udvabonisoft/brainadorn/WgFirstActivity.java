@@ -135,6 +135,15 @@ public class WgFirstActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
+        aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
+
+    }
+
+
     private void loadRewardedAd() {
         if (rewardedAd == null) {
             isLoading = true;
@@ -367,6 +376,8 @@ public class WgFirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
+                aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
             }
         });
         dialog.show();
