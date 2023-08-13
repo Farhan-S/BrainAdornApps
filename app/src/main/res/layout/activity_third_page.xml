@@ -82,6 +82,7 @@
             android:longClickable="true"/>
 
         <TextView
+            android:id="@+id/TandD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/anim_onpress_game_selection_btn"

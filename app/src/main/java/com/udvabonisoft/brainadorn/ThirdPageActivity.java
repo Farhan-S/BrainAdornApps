@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class ThirdPageActivity extends AppCompatActivity {
 
-    TextView select_Wg,dpName;
+    TextView select_Wg,dpName,TandD;
     ImageView dpPic;
     String dpPicName;
     SharedPreferences sharedPreferences;
@@ -27,6 +27,7 @@ public class ThirdPageActivity extends AppCompatActivity {
         select_Wg=findViewById(R.id.select_Wg);
         dpPic=findViewById(R.id.dpPic);
         dpName=findViewById(R.id.dpName);
+        TandD=findViewById(R.id.TandD);
 
 
         sharedPreferences=getSharedPreferences(""+getString(R.string.app_name),MODE_PRIVATE);
