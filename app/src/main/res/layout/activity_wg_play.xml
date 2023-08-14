@@ -96,6 +96,7 @@
             />
 
         <TextView
+            android:visibility="gone"
             android:layout_width="55dp"
             android:layout_height="50dp"
             android:layout_below="@id/aquiredDimond"
@@ -195,6 +196,46 @@
 
 
     </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/ans"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
+            android:layout_above="@id/quizTv"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@+id/timer60sec"
+            android:background="@drawable/nextbtn"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            >
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="100dp"
+                android:fontFamily="@font/comix_loud"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dp"
+                android:text="ANSWER\n\n2X"
+
+                android:textColor="#5B5A5A"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wg_dimond_v"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="14dp"
+                android:layout_marginRight="24dp"/>
+
+
+        </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/hint2"

@@ -3,18 +3,22 @@ package com.udvabonisoft.brainadorn;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class ThirdPageActivity extends AppCompatActivity {
 
-    TextView select_Wg,dpName,TandD,select_mem;
+    TextView select_Wg,dpName,TandD,select_mem,soundOn,soundOff;
     ImageView dpPic;
     String dpPicName;
     SharedPreferences sharedPreferences;
@@ -29,6 +33,8 @@ public class ThirdPageActivity extends AppCompatActivity {
         dpPic=findViewById(R.id.dpPic);
         dpName=findViewById(R.id.dpName);
         TandD=findViewById(R.id.TandD);
+        soundOn=findViewById(R.id.soundOn);
+        soundOff=findViewById(R.id.soundOff);
 
 
         sharedPreferences=getSharedPreferences(""+getString(R.string.app_name),MODE_PRIVATE);
@@ -53,7 +59,41 @@ public class ThirdPageActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
                 startActivity(new Intent(ThirdPageActivity.this,WgFirstActivity.class));
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
+
             }
         });
 
@@ -64,6 +104,57 @@ public class ThirdPageActivity extends AppCompatActivity {
 
             }
         });
+
+        soundOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mute();
+//                soundOn.setVisibility(View.GONE);
+                soundOff.setVisibility(View.VISIBLE);
+            }
+        });
+
+        soundOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.bell_transition.start();
+                unmute();
+
+                soundOff.setVisibility(View.GONE);
+                soundOn.setVisibility(View.VISIBLE);
+            }
+        });
+
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)>10)
+        {
+            soundOn.setVisibility(View.VISIBLE);
+            soundOff.setVisibility(View.GONE);
+        }
+        else {
+            soundOff.setVisibility(View.VISIBLE);
+            soundOn.setVisibility(View.GONE);
+        }
+
+
+
+
+
+    }
+
+    private void mute() {
+        //mute audio
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 1);
+    }
+
+    public void unmute() {
+        //unmute audio
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE, 1);
 
     }
 

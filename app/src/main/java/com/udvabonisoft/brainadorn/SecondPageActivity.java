@@ -200,7 +200,7 @@ public class SecondPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                MainActivity.pop_2.start();
 
                 editor.putString("identity","yes");
 

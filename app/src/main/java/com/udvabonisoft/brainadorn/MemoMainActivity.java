@@ -57,7 +57,7 @@ public class MemoMainActivity extends AppCompatActivity {
     boolean isLoading;
     static boolean isLoaded;
 
-    String buttonColors[] = {"green","red","blue","yellow"};
+    String[] buttonColors = {"green","red","blue","yellow"};
 
     ArrayList gamePattern = new ArrayList();
     ArrayList userPattern= new ArrayList();
@@ -238,7 +238,7 @@ public class MemoMainActivity extends AppCompatActivity {
         moreDiamond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                loadRewardedVideoAd();
+
                 buyDiamond();
 
             }

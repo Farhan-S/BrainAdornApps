@@ -81,20 +81,7 @@
             android:focusable="true"
             android:longClickable="true"/>
 
-        <TextView
-            android:id="@+id/TandD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/anim_onpress_game_selection_btn"
-            android:layout_marginTop="15dp"
-            android:text="Truth and dare"
-            android:fontFamily="@font/bungee_regular"
-            android:textSize="25sp"
-            android:textColor="#fff"
-            android:textAlignment="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:longClickable="true"/>
+
 
         <TextView
             android:id="@+id/select_mem"
@@ -112,6 +99,7 @@
             android:longClickable="true"/>
 
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/anim_onpress_game_selection_btn"
@@ -124,11 +112,68 @@
             android:clickable="true"
             android:focusable="true"
             android:longClickable="true"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/TandD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/anim_onpress_game_selection_btn"
+            android:layout_marginTop="15dp"
+            android:text="Truth and dare"
+            android:fontFamily="@font/bungee_regular"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"/>
+
+
 
 
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/soundOn"
+        android:text="SOUND : ON"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:fontFamily="@font/bungee_regular"
+        android:layout_width="325dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
+        android:shadowColor="#ADADAD"
+        android:background="@drawable/anim_onpress_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/soundOff"
+        android:text="SOUND : OFF"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:fontFamily="@font/bungee_regular"
+        android:layout_width="325dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
+        android:shadowColor="#ADADAD"
+        android:background="@drawable/anim_onpress_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:longClickable="true"
+        />
 
 
 

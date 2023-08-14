@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
@@ -71,16 +73,30 @@ public class ShopActivity extends AppCompatActivity {
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int hint=Integer.parseInt(sharedPreferences.getString("availableHint","5"));
                 int diamond=Integer.parseInt(sharedPreferences.getString("availableDiamond","50"));
-                hint+=2;
-                diamond-=1;
-                editor.putString("availableHint",String.valueOf(hint));
-                editor.putString("availableDiamond",String.valueOf(diamond));
-                editor.apply();
-                aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
-                aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
-            }
+
+                if(diamond>=1)
+                {
+                    MainActivity.cash_register.start();
+
+                    int hint=Integer.parseInt(sharedPreferences.getString("availableHint","5"));
+
+                    hint+=2;
+                    diamond-=1;
+                    editor.putString("availableHint",String.valueOf(hint));
+                    editor.putString("availableDiamond",String.valueOf(diamond));
+                    editor.apply();
+                    aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
+                    aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Not enough diamond !",Toast.LENGTH_SHORT).show();
+                    MainActivity.glass_breaking.start();
+                }
+
+                }
+
         });
 
 

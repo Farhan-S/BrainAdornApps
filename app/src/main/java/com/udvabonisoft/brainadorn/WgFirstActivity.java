@@ -1,5 +1,7 @@
 package com.udvabonisoft.brainadorn;
 
+import static com.udvabonisoft.brainadorn.MainActivity.click_anim;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +45,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.Random;
 
 public class WgFirstActivity extends AppCompatActivity {
 
@@ -116,6 +120,7 @@ public class WgFirstActivity extends AppCompatActivity {
         moreHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.mouse_click.start();
                 startActivity(new Intent(WgFirstActivity.this,ShopActivity.class));
             }
         });
@@ -127,7 +132,7 @@ public class WgFirstActivity extends AppCompatActivity {
         moreDiamond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                loadRewardedVideoAd();
+                MainActivity.mouse_click.start();
                 buyDiamond();
 
             }
@@ -138,6 +143,7 @@ public class WgFirstActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+
         aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
         aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
 
@@ -181,7 +187,7 @@ public class WgFirstActivity extends AppCompatActivity {
 
             return;
         }
-//        showVideoButton.setVisibility(View.INVISIBLE);
+
 
         rewardedAd.setFullScreenContentCallback(
                 new FullScreenContentCallback() {
@@ -323,7 +329,38 @@ public class WgFirstActivity extends AppCompatActivity {
             lvl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Random ran= new Random();
+                    int a;
+                    a=ran.nextInt(8);
+                    if(a==1)
+                    {
+                        MainActivity.pop_1.start();
+                    }
+                    else if(a==2)
+                    {
+                        MainActivity.pop_2.start();
+                    }
+                    else if(a==3)
+                    {
+                        MainActivity.rubber_duck.start();
+                    }
+                    else if(a==4)
+                    {
+                        MainActivity.slap.start();
+                    }
+                    else if(a==5)
+                    {
+                        MainActivity.splat.start();
+                    }
 
+                    else if(a==6)
+                    {
+                        MainActivity.mouse_click.start();
+                    }
+                    else
+                    {
+                        MainActivity.punch_1.start();
+                    }
                     editor.putInt("lvlNum", position);
                     editor.apply();
 
@@ -348,15 +385,18 @@ public class WgFirstActivity extends AppCompatActivity {
         TextView negativeButton = customLayout.findViewById(R.id.negBtn);
 
 
+        positiveButton.setVisibility(View.GONE);
+        new CountDownTimer(2000, 1000) {
 
-   if(isLoaded)
-   {
-       positiveButton.setVisibility(View.VISIBLE);
+            public void onTick(long millisUntilFinished) {
 
-   }
-   else {
-       positiveButton.setVisibility(View.INVISIBLE);
-   }
+            }
+
+            public void onFinish() {
+                positiveButton.setVisibility(View.VISIBLE);
+
+            }
+        }.start();
 
 
 
@@ -365,6 +405,8 @@ public class WgFirstActivity extends AppCompatActivity {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                positiveButton.startAnimation(click_anim);
 
 
                 showRewardedVideo();
@@ -375,6 +417,7 @@ public class WgFirstActivity extends AppCompatActivity {
         negativeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.glass_breaking.start();
                 dialog.dismiss();
                 aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
                 aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));

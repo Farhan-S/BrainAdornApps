@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -32,6 +33,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class WgPlayActivity extends AppCompatActivity {
 
@@ -46,7 +48,7 @@ public class WgPlayActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-    RelativeLayout hint1,hint2;
+    RelativeLayout hint1,hint2,ans;
 
     private AdView mAdView;
 
@@ -80,6 +82,7 @@ public class WgPlayActivity extends AppCompatActivity {
         aquiredDimond=findViewById(R.id.aquiredDimond);
         hint1=findViewById(R.id.hint1);
         hint2=findViewById(R.id.hint2);
+        ans=findViewById(R.id.ans);
         moreHint=findViewById(R.id.moreHint);
 
         timer60sec.setVisibility(View.GONE);
@@ -88,6 +91,7 @@ public class WgPlayActivity extends AppCompatActivity {
         submitBtn.setVisibility(View.GONE);
         hint1.setVisibility(View.GONE);
         hint2.setVisibility(View.GONE);
+        ans.setVisibility(View.GONE);
 
         sharedPreferences=getSharedPreferences(""+getString(R.string.app_name),MODE_PRIVATE);
         editor=sharedPreferences.edit();
@@ -120,10 +124,12 @@ public class WgPlayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                hint1.startAnimation(MainActivity.click_anim);
 
                 int h1= Integer.parseInt(sharedPreferences.getString("availableHint","5"));
                 if(h1>=1)
                 {
+                    MainActivity.long_suspense_2.start();
                     hint1.setVisibility(View.GONE);
                     h1-=1;
                     editor.putString("availableHint",String.valueOf(h1));
@@ -155,12 +161,14 @@ public class WgPlayActivity extends AppCompatActivity {
         hint2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                hint2.startAnimation(MainActivity.click_anim);
 
                 int h2= Integer.parseInt(sharedPreferences.getString("availableHint","5"));
                 if(h2>=2)
                 {
+                    MainActivity.long_suspense_3.start();
                     hint2.setVisibility(View.GONE);
+                    ans.setVisibility(View.VISIBLE);
                     h2-=2;
                     editor.putString("availableHint",String.valueOf(h2));
                     editor.apply();
@@ -185,9 +193,36 @@ public class WgPlayActivity extends AppCompatActivity {
             }
         });
 
+        ans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int diamond=Integer.parseInt(sharedPreferences.getString("availableDiamond","50"));
+                if(diamond>=2)
+                {
+                    ans.setVisibility(View.GONE);
+                    HashMap<String, String> hashMap = arrayList.get(lvl);
+                    String ans = hashMap.get("ans");
+                    quizTv.setText(ans);
+
+                    MainActivity.flashback.start();
+                    diamond-=2;
+                    editor.putString("availableDiamond",String.valueOf(diamond));
+                    editor.apply();
+                    aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Not enough diamond !",Toast.LENGTH_SHORT).show();
+                    MainActivity.glass_breaking.start();
+                }
+            }
+        });
+
         moreHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.reloading.start();
                 startActivity(new Intent(WgPlayActivity.this,ShopActivity.class));
             }
         });
@@ -225,6 +260,10 @@ public class WgPlayActivity extends AppCompatActivity {
                        } else if (time>=0) {
                            numStar="1";
                        }
+                       if(time<20)
+                       {
+                           MainActivity.heartbeat.start();
+                       }
 
                     }
 
@@ -245,6 +284,7 @@ public class WgPlayActivity extends AppCompatActivity {
                 submitBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         HashMap<String, String> hashMap = arrayList.get(lvl);
                         String ans = hashMap.get("ans");
                         if(getResult(ans))
@@ -261,6 +301,13 @@ public class WgPlayActivity extends AppCompatActivity {
                 });
             }
         }.start();
+
+        try {
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
     public boolean getResult(String ans)
@@ -294,6 +341,7 @@ public class WgPlayActivity extends AppCompatActivity {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
             }
         });
@@ -369,11 +417,14 @@ public class WgPlayActivity extends AppCompatActivity {
                 star1.setImageResource(R.drawable.levelstarsuccess);
                 star2.setImageResource(R.drawable.levelstarsuccess);
                 star3.setImageResource(R.drawable.levelstarsuccess);
+                MainActivity.crowd_booing.start();
             } else if (numStar.equals("2")) {
                 star1.setImageResource(R.drawable.levelstarsuccess);
                 star2.setImageResource(R.drawable.levelstarsuccess);
+                MainActivity.kids_cheering.start();
             } else if (numStar.equals("1")) {
                 star1.setImageResource(R.drawable.levelstarsuccess);
+                MainActivity.people_clapping.start();
             }
         }
         else
@@ -384,6 +435,34 @@ public class WgPlayActivity extends AppCompatActivity {
             skipLvl.setVisibility(View.VISIBLE);
             skipDiamondstar3.setVisibility(View.VISIBLE);
             lvlIndicator.setText("FAILED");
+            Random ran= new Random();
+            int a;
+            a=ran.nextInt(8);
+            if(a==1)
+            {
+                MainActivity.fail_1.start();
+            }
+            else if(a==2)
+            {
+                MainActivity.fail_2.start();
+            }
+            else if(a==3)
+            {
+                MainActivity.wrong_answer.start();
+            }
+            else if(a==4)
+            {
+                MainActivity.fart_1.start();
+            }
+            else if(a==5)
+            {
+                MainActivity.fart_1.start();
+            }
+
+            else
+            {
+                MainActivity.wrong_answer.start();
+            }
         }
 
         onSuccessReplay.setOnClickListener(new View.OnClickListener() {
@@ -392,6 +471,38 @@ public class WgPlayActivity extends AppCompatActivity {
                 Intent i =new Intent(WgPlayActivity.this,WgPlayActivity.class);
                 finish();
                 startActivity(i);
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
             }
         });
         nextLvl.setOnClickListener(new View.OnClickListener() {
@@ -404,6 +515,38 @@ public class WgPlayActivity extends AppCompatActivity {
                 Intent i =new Intent(WgPlayActivity.this,WgPlayActivity.class);
                 finish();
                 startActivity(i);
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
             }
         });
 
@@ -422,6 +565,38 @@ public class WgPlayActivity extends AppCompatActivity {
                     Intent i =new Intent(WgPlayActivity.this,WgPlayActivity.class);
                     finish();
                     startActivity(i);
+                    Random ran= new Random();
+                    int a;
+                    a=ran.nextInt(8);
+                    if(a==1)
+                    {
+                        MainActivity.whoosh_1.start();
+                    }
+                    else if(a==2)
+                    {
+                        MainActivity.whoosh_2.start();
+                    }
+                    else if(a==3)
+                    {
+                        MainActivity.whoosh_3.start();
+                    }
+                    else if(a==4)
+                    {
+                        MainActivity.whoosh_4.start();
+                    }
+                    else if(a==5)
+                    {
+                        MainActivity.whoosh_5.start();
+                    }
+
+                    else if(a==6)
+                    {
+                        MainActivity.whoosh_6.start();
+                    }
+                    else
+                    {
+                        MainActivity.whoosh_7.start();
+                    }
                 }
                 else
                 {

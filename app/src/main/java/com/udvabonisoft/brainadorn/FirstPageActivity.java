@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class FirstPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!nick_ed.getText().toString().isEmpty())
                 {
+                    MainActivity.pop_2.start();
                     editor.putString("dpName",nick_ed.getText().toString());
                     editor.apply();
                  Intent i=   new Intent(FirstPageActivity.this,SecondPageActivity.class);
@@ -50,7 +52,12 @@ public class FirstPageActivity extends AppCompatActivity {
             }
         });
 
-
+        try {
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
 
 
     }
