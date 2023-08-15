@@ -102,6 +102,39 @@ public class ThirdPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ThirdPageActivity.this,MemoMainActivity.class));
 
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
+
             }
         });
 
