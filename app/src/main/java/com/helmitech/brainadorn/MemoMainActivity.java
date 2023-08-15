@@ -1,4 +1,4 @@
-package com.udvabonisoft.brainadorn;
+package com.helmitech.brainadorn;
 
 import android.app.Activity;
 import android.content.Intent;

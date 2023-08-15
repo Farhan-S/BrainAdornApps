@@ -1,4 +1,4 @@
-package com.udvabonisoft.brainadorn;
+package com.helmitech.brainadorn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,6 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Looper;
-import android.util.Log;
-import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;

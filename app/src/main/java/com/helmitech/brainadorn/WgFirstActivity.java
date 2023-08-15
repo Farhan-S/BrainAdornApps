@@ -1,6 +1,6 @@
-package com.udvabonisoft.brainadorn;
+package com.helmitech.brainadorn;
 
-import static com.udvabonisoft.brainadorn.MainActivity.click_anim;
+import static com.helmitech.brainadorn.MainActivity.click_anim;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -35,7 +34,6 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
-import com.google.android.gms.ads.rewarded.ServerSideVerificationOptions;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

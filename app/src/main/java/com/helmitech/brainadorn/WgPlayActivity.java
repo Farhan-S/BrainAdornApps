@@ -1,6 +1,6 @@
-package com.udvabonisoft.brainadorn;
+package com.helmitech.brainadorn;
 
-import static com.udvabonisoft.brainadorn.WgFirstActivity.arrayList;
+import static com.helmitech.brainadorn.WgFirstActivity.arrayList;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
