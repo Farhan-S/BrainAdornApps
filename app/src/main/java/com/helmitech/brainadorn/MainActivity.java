@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;

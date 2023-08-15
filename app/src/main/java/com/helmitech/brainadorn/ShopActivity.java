@@ -19,6 +19,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
+
 public class ShopActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;

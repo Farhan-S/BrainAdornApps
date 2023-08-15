@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+
 public class SecondPageActivity extends AppCompatActivity {
     public static String backgroundImageName;
     Context context = null;

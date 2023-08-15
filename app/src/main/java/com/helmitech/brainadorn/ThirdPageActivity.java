@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import java.util.Random;
 
 public class ThirdPageActivity extends AppCompatActivity {

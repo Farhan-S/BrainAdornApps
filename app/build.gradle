@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.udvabonisoft.brainadorn'
+    namespace 'com.helmitech.brainadorn'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.udvabonisoft.brainadorn"
+        applicationId "com.helmitech.brainadorn"
         minSdk 24
         targetSdk 33
         versionCode 1

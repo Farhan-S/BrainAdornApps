@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class FirstPageActivity extends AppCompatActivity {
 
     TextView setNickNameBtn;
