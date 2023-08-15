@@ -14,9 +14,10 @@
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/quiz_logo_main"
+        android:src="@drawable/brainadrorn_front_page_logo"
         android:layout_above="@id/toplayout"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
         />
 
     <LinearLayout
