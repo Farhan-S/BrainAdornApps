@@ -41,7 +41,7 @@ public class MemoMainActivity extends AppCompatActivity {
 
     ImageView green, red, blue, yellow,dpPic;
 
-    TextView dpName,aquiredStar, aquiredDimond, scoreTv,hintBtn1, hintBtn2,timer3sec, moreHint,moreDiamond;
+    TextView dpName,aquiredStar, aquiredDimond, scoreTv,hintBtn1, hintBtn2,timer3sec, moreHint,moreDiamond,highScoreTv;
     Animation click_anim;
     MediaPlayer g_audio, r_audio, b_audio, y_audio, wrong;
     Button playBtn;
@@ -101,6 +101,7 @@ public class MemoMainActivity extends AppCompatActivity {
         timer3sec=findViewById(R.id.timer3sec);
         moreHint=findViewById(R.id.moreHint);
         moreDiamond=findViewById(R.id.moreDiamond);
+        highScoreTv=findViewById(R.id.highScoreTv);
 
 
 
@@ -123,6 +124,8 @@ public class MemoMainActivity extends AppCompatActivity {
         sharedPreferences=getSharedPreferences(""+getString(R.string.app_name),MODE_PRIVATE);
         editor=sharedPreferences.edit();
 
+
+
         String dpPicName=sharedPreferences.getString("dpPicName","img1");
         int resId = getResources().getIdentifier(dpPicName, "drawable", getPackageName());
         dpPic.setImageResource(resId);
@@ -132,6 +135,7 @@ public class MemoMainActivity extends AppCompatActivity {
 
         aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
         aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
+        highScoreTv.setText("HIGH SCORE \n\n "+sharedPreferences.getInt("highScore",score));
 
 
         hint1.setVisibility(View.GONE);
@@ -139,6 +143,8 @@ public class MemoMainActivity extends AppCompatActivity {
         gameLay.setVisibility(View.GONE);
         scoreTv.setVisibility(View.GONE);
         timer3sec.setVisibility(View.GONE);
+        highScoreTv.setVisibility(View.GONE);
+
 
 
         playButtonDialog();
@@ -307,6 +313,16 @@ public class MemoMainActivity extends AppCompatActivity {
             {
                 score++;
                 scoreTv.setText(""+score);
+
+                if(score>sharedPreferences.getInt("highScore",score))
+                {
+                    editor.putInt("highScore", score);
+                    editor.apply();
+                    highScoreTv.setText("HIGH SCORE \n\n "+sharedPreferences.getInt("highScore",score));
+                }
+
+
+
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -351,6 +367,38 @@ public class MemoMainActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
                 dialog.dismiss();
 
                 //timer
@@ -368,6 +416,7 @@ public class MemoMainActivity extends AppCompatActivity {
                         hint2.setVisibility(View.VISIBLE);
                         gameLay.setVisibility(View.VISIBLE);
                         scoreTv.setVisibility(View.VISIBLE);
+                        highScoreTv.setVisibility(View.VISIBLE);
                         timer3sec.setVisibility(View.GONE);
 
                         nextSequence();
@@ -396,6 +445,7 @@ public class MemoMainActivity extends AppCompatActivity {
 
         scoreText.setText("GAME OVER\n\n SCORE "+score);
 
+
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -406,6 +456,39 @@ public class MemoMainActivity extends AppCompatActivity {
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
                 dialog.dismiss();
 
                 //timer
@@ -417,6 +500,7 @@ public class MemoMainActivity extends AppCompatActivity {
                         hint2.setVisibility(View.GONE);
                         gameLay.setVisibility(View.GONE);
                         scoreTv.setVisibility(View.GONE);
+                        highScoreTv.setVisibility(View.GONE);
                         timer3sec.setText("" + millisUntilFinished / 1000);
                     }
 
@@ -427,6 +511,7 @@ public class MemoMainActivity extends AppCompatActivity {
                         hint2.setVisibility(View.VISIBLE);
                         gameLay.setVisibility(View.VISIBLE);
                         scoreTv.setVisibility(View.VISIBLE);
+                        highScoreTv.setVisibility(View.VISIBLE);
                         timer3sec.setVisibility(View.GONE);
 
 
