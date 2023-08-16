@@ -357,8 +357,11 @@ public class WgPlayActivity extends AppCompatActivity {
                 } else  {
 
                     countDownTimer1.cancel();
+                    finishActivity(WgFirstActivity.CONTEXT_INCLUDE_CODE);
+                    overridePendingTransition(0, 0);
                     finish();
-
+                    startActivity(new Intent(WgPlayActivity.this,WgFirstActivity.class));
+                    overridePendingTransition(0, 0);
                 }
 
             }
