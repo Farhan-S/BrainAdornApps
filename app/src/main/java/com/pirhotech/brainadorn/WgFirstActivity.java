@@ -139,6 +139,7 @@ public class WgFirstActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     public void onResume(){
         super.onResume();
@@ -328,6 +329,7 @@ public class WgFirstActivity extends AppCompatActivity {
             lvl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Random ran= new Random();
                     int a;
                     a=ran.nextInt(8);
@@ -363,13 +365,90 @@ public class WgFirstActivity extends AppCompatActivity {
                     editor.putInt("lvlNum", position);
                     editor.apply();
 
-                    Intent i = new Intent(getApplicationContext(), PopupActiviy.class);
-                    startActivity(i);
+                  showCustomAlertDialog();
                     myAdapter.notifyDataSetChanged();
                 }
             });
             return myView;
         }
+    }
+
+    private void showCustomAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.CustomDialog);
+        View customLayout = getLayoutInflater().inflate(R.layout.popup_dialogue_box, null);
+        builder.setView(customLayout);
+
+        AlertDialog dialog = builder.create();
+
+        // Set up your custom UI elements and handle their interactions if needed
+
+
+        TextView lvlIndicator = customLayout.findViewById(R.id.lvlIndicator);
+        TextView playBtn = customLayout.findViewById(R.id.playBtn);
+        TextView noPlayBtn = customLayout.findViewById(R.id.noPlayBtn);
+
+
+        int lvl=sharedPreferences.getInt("lvlNum",0);
+        lvl+=1;
+        lvlIndicator.setText("LEVEL "+lvl);
+
+
+        HashMap<String, String> hashMap = arrayList.get(sharedPreferences.getInt("lvlNum",0));
+        String playable=hashMap.get("playable");
+
+
+
+        noPlayBtn.setVisibility(View.GONE);
+
+        if(!Objects.equals(playable, "yes"))
+        {
+            playBtn.setVisibility(View.GONE);
+            noPlayBtn.setVisibility(View.VISIBLE);
+        }
+
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+
+                Random ran= new Random();
+                int a;
+                a=ran.nextInt(8);
+                if(a==1)
+                {
+                    MainActivity.whoosh_1.start();
+                }
+                else if(a==2)
+                {
+                    MainActivity.whoosh_2.start();
+                }
+                else if(a==3)
+                {
+                    MainActivity.whoosh_3.start();
+                }
+                else if(a==4)
+                {
+                    MainActivity.whoosh_4.start();
+                }
+                else if(a==5)
+                {
+                    MainActivity.whoosh_5.start();
+                }
+
+                else if(a==6)
+                {
+                    MainActivity.whoosh_6.start();
+                }
+                else
+                {
+                    MainActivity.whoosh_7.start();
+                }
+
+                Intent i =new Intent(getApplicationContext(),WgPlayActivity.class);
+                startActivity(i);
+            }
+        });
+        dialog.show();
     }
 
     private void buyDiamond() {

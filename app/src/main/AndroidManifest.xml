@@ -35,11 +35,7 @@
             android:name=".WgPlayActivity"
             android:exported="false"
             android:screenOrientation="nosensor"/>
-        <activity
-            android:name=".PopupActiviy"
-            android:exported="false"
-            android:theme="@style/Base.Theme.BrainAdorn.PopMe"
-            android:screenOrientation="nosensor"/>
+
         <activity
             android:name=".WgFirstActivity"
             android:exported="false"

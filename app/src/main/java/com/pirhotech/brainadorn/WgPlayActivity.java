@@ -41,7 +41,8 @@ public class WgPlayActivity extends AppCompatActivity {
 
     HashMap<String, String> hashMap = new HashMap<>();
 
-    CountDownTimer countDownTimer;
+    CountDownTimer countDownTimer1,countDownTimer2;
+
 
     public static String numStar;
 
@@ -228,7 +229,7 @@ public class WgPlayActivity extends AppCompatActivity {
         });
 
 
-        new CountDownTimer(4000, 1000) {
+        countDownTimer1=  new CountDownTimer(4000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer3sec.setText("" + millisUntilFinished / 1000);
@@ -243,7 +244,7 @@ public class WgPlayActivity extends AppCompatActivity {
                 hint1.setVisibility(View.VISIBLE);
 //                hint2.setVisibility(View.VISIBLE);
 
-                 countDownTimer= new CountDownTimer(60000, 1000) {
+                countDownTimer2= new CountDownTimer(60000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         timer60sec.setText("" + millisUntilFinished / 1000);
@@ -290,12 +291,12 @@ public class WgPlayActivity extends AppCompatActivity {
                         String ans = hashMap.get("ans");
                         if(getResult(ans))
                         {
-                            countDownTimer.cancel();
+                            countDownTimer2.cancel();
                             finalResultGame(true,numStar);
                         }
                         else
                         {
-                            countDownTimer.cancel();
+                            countDownTimer2.cancel();
                             finalResultGame(false,numStar);
                         }
                     }
@@ -342,8 +343,24 @@ public class WgPlayActivity extends AppCompatActivity {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                countDownTimer.cancel();
-                finish();
+                if(countDownTimer2!=null)
+                {
+                    countDownTimer2.cancel();
+
+
+                   finishActivity(WgFirstActivity.CONTEXT_INCLUDE_CODE);
+                    overridePendingTransition(0, 0);
+                    finish();
+                    startActivity(new Intent(WgPlayActivity.this,WgFirstActivity.class));
+                    overridePendingTransition(0, 0);
+
+                } else  {
+
+                    countDownTimer1.cancel();
+                    finish();
+
+                }
+
             }
         });
 
