@@ -297,8 +297,9 @@ public class WgFirstActivity extends AppCompatActivity {
 
             HashMap<String, String> hashMap = arrayList.get(position);
             String numStar = hashMap.get("numStar");
+            String playable = hashMap.get("playable");
 
-            if (position != 0)
+            if (!Objects.equals(playable, "yes"))
             {
                 int resId = getResources().getIdentifier("levellocked", "drawable", getPackageName());
                 lvl.setBackgroundResource(resId);
