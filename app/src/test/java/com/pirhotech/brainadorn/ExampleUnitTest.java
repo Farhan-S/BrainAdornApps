@@ -1,4 +1,4 @@
-package com.helmitech.brainadorn;
+package com.pirhotech.brainadorn;
 
 import org.junit.Test;
 

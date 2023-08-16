@@ -1,6 +1,6 @@
-package com.helmitech.brainadorn;
+package com.pirhotech.brainadorn;
 
-import static com.helmitech.brainadorn.WgFirstActivity.arrayList;
+import static com.pirhotech.brainadorn.WgFirstActivity.arrayList;
 
 import android.app.Activity;
 import android.content.Intent;

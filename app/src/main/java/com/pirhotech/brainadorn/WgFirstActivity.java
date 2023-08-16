@@ -1,6 +1,6 @@
-package com.helmitech.brainadorn;
+package com.pirhotech.brainadorn;
 
-import static com.helmitech.brainadorn.MainActivity.click_anim;
+import static com.pirhotech.brainadorn.MainActivity.click_anim;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
