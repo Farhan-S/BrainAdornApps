@@ -41,6 +41,8 @@ public class WgPlayActivity extends AppCompatActivity {
 
     HashMap<String, String> hashMap = new HashMap<>();
 
+    CountDownTimer countDownTimer;
+
     public static String numStar;
 
     SharedPreferences sharedPreferences;
@@ -241,7 +243,7 @@ public class WgPlayActivity extends AppCompatActivity {
                 hint1.setVisibility(View.VISIBLE);
 //                hint2.setVisibility(View.VISIBLE);
 
-                CountDownTimer countDownTimer= new CountDownTimer(60000, 1000) {
+                 countDownTimer= new CountDownTimer(60000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         timer60sec.setText("" + millisUntilFinished / 1000);
@@ -258,10 +260,11 @@ public class WgPlayActivity extends AppCompatActivity {
                        } else if (time>=0) {
                            numStar="1";
                        }
-                       if(time<20)
+                       if(time<20&&time>0)
                        {
                            MainActivity.heartbeat.start();
                        }
+
 
                     }
 
@@ -339,7 +342,7 @@ public class WgPlayActivity extends AppCompatActivity {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                countDownTimer.cancel();
                 finish();
             }
         });

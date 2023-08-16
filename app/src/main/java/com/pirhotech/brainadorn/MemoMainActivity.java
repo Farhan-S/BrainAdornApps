@@ -136,7 +136,17 @@ public class MemoMainActivity extends AppCompatActivity {
 
         aquiredStar.setText(sharedPreferences.getString("availableHint","5"));
         aquiredDimond.setText(sharedPreferences.getString("availableDiamond","50"));
-        highScoreTv.setText("HIGH SCORE \n\n "+sharedPreferences.getInt("highScore",score));
+
+        if(sharedPreferences.contains("highScore"))
+        {
+            highScoreTv.setText("HIGH SCORE \n\n "+sharedPreferences.getInt("highScore",score));
+        }
+        else
+        {
+            editor.putInt("highScore",0);
+            editor.apply();
+        }
+
 
 
         hint1.setVisibility(View.GONE);
