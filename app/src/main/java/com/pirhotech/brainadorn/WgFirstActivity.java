@@ -439,19 +439,6 @@ public class WgFirstActivity extends AppCompatActivity {
 
 
 
-
-
-        hashMap = new HashMap<>();
-        hashMap.put("playable", "no");
-        hashMap.put("played", "no");
-        hashMap.put("numStar", "0");
-        hashMap.put("quiz", "What has keys but can't unlock your car?");
-        hashMap.put("ans", "keyboard");
-        hashMap.put("hint1", "It's used for typing.");
-        hashMap.put("hint2", "It has keys with letters and numbers.");
-        arrayList.add(hashMap);
-
-
         hashMap = new HashMap<>();
         hashMap.put("playable", "no");
         hashMap.put("played", "no");
@@ -566,6 +553,17 @@ public class WgFirstActivity extends AppCompatActivity {
         hashMap.put("ans", "river");
         hashMap.put("hint1", "It flows with water.");
         hashMap.put("hint2", "It's found in nature.");
+        arrayList.add(hashMap);
+
+
+        hashMap = new HashMap<>();
+        hashMap.put("playable", "no");
+        hashMap.put("played", "no");
+        hashMap.put("numStar", "0");
+        hashMap.put("quiz", "What has keys but can't unlock your car?");
+        hashMap.put("ans", "keyboard");
+        hashMap.put("hint1", "It's used for typing.");
+        hashMap.put("hint2", "It has keys with letters and numbers.");
         arrayList.add(hashMap);
 
 
