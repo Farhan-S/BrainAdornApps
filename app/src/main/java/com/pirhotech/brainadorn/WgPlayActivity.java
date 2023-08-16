@@ -169,7 +169,6 @@ public class WgPlayActivity extends AppCompatActivity {
                 {
                     MainActivity.long_suspense_3.start();
                     hint2.setVisibility(View.GONE);
-                    ans.setVisibility(View.VISIBLE);
                     h2-=2;
                     editor.putString("availableHint",String.valueOf(h2));
                     editor.apply();
@@ -183,6 +182,7 @@ public class WgPlayActivity extends AppCompatActivity {
 
                         public void onFinish() {
                             quizTv.setText(quiz);
+                            ans.setVisibility(View.VISIBLE);
                         }
                     }.start();
                 }
@@ -194,6 +194,7 @@ public class WgPlayActivity extends AppCompatActivity {
             }
         });
 
+
         ans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,7 +205,19 @@ public class WgPlayActivity extends AppCompatActivity {
                     ans.setVisibility(View.GONE);
                     HashMap<String, String> hashMap = arrayList.get(lvl);
                     String ans = hashMap.get("ans");
-                    quizTv.setText(ans);
+
+
+
+                    new CountDownTimer(10000, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            quizTv.setText(ans);
+                        }
+
+                        public void onFinish() {
+                            quizTv.setText(quiz);
+                        }
+                    }.start();
 
                     MainActivity.flashback.start();
                     diamond-=2;
@@ -219,6 +232,8 @@ public class WgPlayActivity extends AppCompatActivity {
                 }
             }
         });
+
+
 
         moreHint.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,6 +260,9 @@ public class WgPlayActivity extends AppCompatActivity {
 //                hint2.setVisibility(View.VISIBLE);
 
                 countDownTimer2= new CountDownTimer(60000, 1000) {
+
+
+
 
                     public void onTick(long millisUntilFinished) {
                         timer60sec.setText("" + millisUntilFinished / 1000);
@@ -280,7 +298,11 @@ public class WgPlayActivity extends AppCompatActivity {
                         {
                             finalResultGame(false,numStar);
                         }
+
+
                     }
+
+
                 }.start();
 
                 submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -301,6 +323,8 @@ public class WgPlayActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
             }
         }.start();
 
