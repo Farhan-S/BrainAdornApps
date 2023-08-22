@@ -438,6 +438,7 @@ public class MemoMainActivity extends AppCompatActivity {
 
             }
         });
+        dialog.setCanceledOnTouchOutside(false);
         dialog.show();
     }
 
@@ -537,6 +538,7 @@ public class MemoMainActivity extends AppCompatActivity {
 
             }
         });
+        dialog.setCanceledOnTouchOutside(false);
         dialog.show();
     }
 
