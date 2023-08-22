@@ -278,6 +278,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:weightSum="2"
             >
             <ImageView
                 android:id="@+id/green"
@@ -289,6 +290,7 @@
                 android:focusable="true"
                 android:longClickable="true"
                 android:foreground="?attr/selectableItemBackground"
+                android:layout_weight="1"
                 />
             <ImageView
                 android:id="@+id/red"
@@ -300,6 +302,7 @@
                 android:focusable="true"
                 android:longClickable="true"
                 android:foreground="?attr/selectableItemBackground"
+                android:layout_weight="1"
                 />
 
         </LinearLayout>
@@ -312,6 +315,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:weightSum="2"
             >
 
             <ImageView
@@ -325,6 +329,7 @@
                 android:focusable="true"
                 android:longClickable="true"
                 android:foreground="?attr/selectableItemBackground"
+                android:layout_weight="1"
                 />
             <ImageView
                 android:id="@+id/yellow"
@@ -335,6 +340,7 @@
                 android:focusable="true"
                 android:longClickable="true"
                 android:foreground="?attr/selectableItemBackground"
+                android:layout_weight="1"
                 />
 
         </LinearLayout>
